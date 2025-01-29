@@ -22,7 +22,7 @@ export const FormContainer = styled.div`
 export const Form = styled.form`
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 10px;
 `
 export const FormTitle = styled.h2`
   font-size: 2.7rem;
@@ -33,7 +33,6 @@ export const SpanTextForm = styled.span`
   color: #004;
   font-size: 1.3rem;
   text-decoration: underline;
-  margin-top: 15px;
   cursor: pointer;
 `;
 export const ImageContainer = styled.div<ImageContainerProp>`

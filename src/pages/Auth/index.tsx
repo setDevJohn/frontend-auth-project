@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { FormEvent, useState } from "react";
 import { InputWithLabel } from "../../components/InputWithLabel";
 import { login, register } from "./inputList";
 import authImage from "../../assets/gifs/auth-image.gif"
@@ -13,6 +13,7 @@ import {
   ImageTitle,
   SpanTextForm
 } from "./styles";
+import { FormButton } from "../../components/FormButton";
 
 type TLoginChange = {
   name: string,
@@ -50,10 +51,14 @@ export function Auth() {
     setRegisterForm(prev => ({...prev, [name]: value}))
   }
 
+  function handleSubmit(e: FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+  }
+
   return (
     <Container>
       <FormContainer>
-        <Form>
+        <Form onSubmit={(e) => handleSubmit(e)}>
           <FormTitle>REGISTRO</FormTitle>
 
           {register.map((curField, i) => (
@@ -61,10 +66,13 @@ export function Auth() {
               key={i}
               name={curField.name}
               label={curField.label}
+              type={curField.type ?? null} 
               value={registerForm[curField.name as keyof TRegisterForm]}
               handleChange={(target) => handleRegisterChange(target)}
             />
           ))}
+
+          <FormButton text="REGISTRAR"/>
 
           <SpanTextForm onClick={() => setRegisterStatus(false)}>
             Já possui um cadastro? Faça login
@@ -73,7 +81,7 @@ export function Auth() {
       </FormContainer>
 
       <FormContainer>
-        <Form>
+        <Form onSubmit={(e) => handleSubmit(e)}>
           <FormTitle>LOGIN</FormTitle>
 
           {login.map((curField, i) => (
@@ -81,10 +89,13 @@ export function Auth() {
               key={i}
               name={curField.name}
               label={curField.label}
+              type={curField.type ?? null} 
               value={loginForm[curField.name as keyof TLoginForm]}
               handleChange={(target) => handleLoginChange(target)}
             />
           ))}
+
+          <FormButton text="REGISTRAR"/>
 
           <SpanTextForm onClick={() => setRegisterStatus(true)}>
             Não possui um cadastro? Se inscreva!
