@@ -5,14 +5,15 @@ type ComponentProps = {
   name: string,
   value: string,
   handleChange: (target: EventTarget & HTMLInputElement) => void,
+  type?: string | null,
 }
 
-export function InputWithLabel({label, value, name, handleChange}: ComponentProps) {
+export function InputWithLabel({label, value, name, type, handleChange}: ComponentProps) {
   return (
     <InputContainer>
       <InputLabel>{label}</InputLabel>
       <InputEntrie 
-        type="text"
+        type={type || "text"}
         name={name}
         value={value}
         onChange={({target}) => handleChange(target)}
