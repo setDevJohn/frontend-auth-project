@@ -5,10 +5,11 @@ type ComponentProps = {
   name: string,
   value: string,
   handleChange: (target: EventTarget & HTMLInputElement) => void,
+  error?: boolean,
   type?: string | null,
 }
 
-export function InputWithLabel({label, value, name, type, handleChange}: ComponentProps) {
+export function InputWithLabel({label, value, name, type, error = false, handleChange}: ComponentProps) {
   return (
     <InputContainer>
       <InputLabel>{label}</InputLabel>
@@ -16,6 +17,7 @@ export function InputWithLabel({label, value, name, type, handleChange}: Compone
         type={type || "text"}
         name={name}
         value={value}
+        $error={error}
         onChange={({target}) => handleChange(target)}
       />
     </InputContainer>
