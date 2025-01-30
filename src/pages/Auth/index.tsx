@@ -20,39 +20,60 @@ type TLoginChange = {
   value: string,
 }
 type TLoginForm = {
-  email: string,
-  password: string,
+  login: string,
+  pass: string,
 }
 type TRegisterForm = {
   name: string,
   email: string,
   password: string,
+  socialReason: string,
+  tradingName: string,
+  cnpj: string,
+
 }
 
 const defaultLoginForm = {
-  email: '',
-  password: '',
+  login: '',
+  pass: '',
 }
 const defaultRegisterForm = {
   name: '',
   email: '',
   password: '',
+  socialReason: '',
+  tradingName: '',
+  cnpj: '',
 }
 
 export function Auth() {
   const [loginForm, setLoginForm] = useState<TLoginForm>(defaultLoginForm)
   const [registerForm, setRegisterForm] = useState<TRegisterForm>(defaultRegisterForm)
   const [registerStatus, setRegisterStatus] = useState<boolean>(false);
+  const [errorFields, setErrorFields] = useState<string[]>(['']);
 
   function handleLoginChange({ name, value }: TLoginChange) {
+    setErrorFields(prev => prev.filter(field => field !== name))
     setLoginForm(prev => ({...prev, [name]: value}))
   }
+
   function handleRegisterChange({ name, value }: TLoginChange) {
+    setErrorFields(prev => prev.filter(field => field !== name))
     setRegisterForm(prev => ({...prev, [name]: value}))
   }
 
   function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
+  }
+
+  const changeForm = () => {
+    setRegisterStatus(prev => !prev);
+
+    setTimeout(() => {
+      setErrorFields([]);
+      setLoginForm(defaultLoginForm);
+      setRegisterForm(defaultRegisterForm);
+    }, 500)
   }
 
   return (
@@ -66,7 +87,8 @@ export function Auth() {
               key={i}
               name={curField.name}
               label={curField.label}
-              type={curField.type ?? null} 
+              type={curField.type ?? null}
+              error={errorFields.includes(curField.name)}
               value={registerForm[curField.name as keyof TRegisterForm]}
               handleChange={(target) => handleRegisterChange(target)}
             />
@@ -74,7 +96,7 @@ export function Auth() {
 
           <FormButton text="REGISTRAR"/>
 
-          <SpanTextForm onClick={() => setRegisterStatus(false)}>
+          <SpanTextForm onClick={changeForm}>
             Já possui um cadastro? Faça login
           </SpanTextForm>
         </Form>
@@ -90,6 +112,7 @@ export function Auth() {
               name={curField.name}
               label={curField.label}
               type={curField.type ?? null} 
+              error={errorFields.includes(curField.name)}
               value={loginForm[curField.name as keyof TLoginForm]}
               handleChange={(target) => handleLoginChange(target)}
             />
@@ -97,7 +120,7 @@ export function Auth() {
 
           <FormButton text="REGISTRAR"/>
 
-          <SpanTextForm onClick={() => setRegisterStatus(true)}>
+          <SpanTextForm onClick={changeForm}>
             Não possui um cadastro? Se inscreva!
           </SpanTextForm>
         </Form>
