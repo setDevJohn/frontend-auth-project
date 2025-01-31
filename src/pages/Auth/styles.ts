@@ -55,9 +55,9 @@ export const ImageContainer = styled.div<ImageContainerProp>`
   justify-content: center;
   gap: 15px;
   background-color: #5151a2;
-  transition: all 0.8s ease;
-  transform: translateX(${({$register}) => $register ? '100%' : '0%'}) scale(1.3);
-  clip-path: polygon(0% 0%, 87% 0%, 100% 100%, 13% 100%);
+  transition: transform 0.8s ease, clip-path 0.8s ease-out 0.1s;
+  transform: translateX(${({$register}) => $register ? '100%' : '0%'});
+  clip-path: polygon(${({$register}) =>  !$register ? '0% 0%, 100% 0%, 88% 100%, 0% 100%' : '0% 0%, 100% 0%, 100% 100%, 14% 100%'});
   padding: 28px;
   width: 50%;
   height: 100vh;
@@ -69,7 +69,7 @@ export const ImageTitle = styled.p`
   text-align: center;
 `;
 export const ImageAnchor = styled.a`
-  width: 50%;
+  width: 55%;
 `;
 export const AuthImage = styled.img`
   max-width: 100%;
