@@ -17,6 +17,7 @@ export const FormContainer = styled.div`
   align-items: center;
   justify-content: center;
   flex: 1;
+  padding: 15px;
   height: 100vh;
 `;
 export const Form = styled.form`
@@ -59,19 +60,21 @@ export const ImageContainer = styled.div<ImageContainerProp>`
   transition: transform 0.8s ease, clip-path 0.8s ease-out 0.1s;
   transform: translateX(${({$register}) => $register ? '100%' : '0%'});
   clip-path: polygon(${({$register}) =>  !$register ? '0% 0%, 100% 0%, 88% 100%, 0% 100%' : '0% 0%, 100% 0%, 100% 100%, 14% 100%'});
-  padding: 28px;
+  padding: 50px;
   width: 50%;
   height: 100vh;
 `;
 export const ImageTitle = styled.p`
   color: #fff;
-  font-size: 2.1rem;
+  font-size: 2.3rem;
   font-weight: 600;
   text-align: center;
 `;
 export const ImageAnchor = styled.a`
-  width: 55%;
+  width: 90%;
 `;
 export const AuthImage = styled.img`
-  max-width: 100%;
+  width: 100%;
+  max-width: 500px;
+
 `;
