@@ -10,7 +10,9 @@ export const Button = styled.input`
   border: 1px solid #ccc;
   border-radius: 4px;
   outline: none;
-  margin-top: 15px;
+  margin: 15px auto 0 auto;
+  width: 100%;
+  max-width: 243px;
   cursor: pointer;
   transition: all ease 0.2s ;
 

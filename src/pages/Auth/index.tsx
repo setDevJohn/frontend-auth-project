@@ -11,6 +11,8 @@ import {
   ImageAnchor, 
   ImageContainer,
   ImageTitle,
+  InputGroup,
+  InputsContainer,
   SpanTextForm
 } from "./styles";
 import { FormButton } from "../../components/FormButton";
@@ -82,17 +84,34 @@ export function Auth() {
         <Form onSubmit={(e) => handleSubmit(e)}>
           <FormTitle>REGISTRO</FormTitle>
 
-          {register.map((curField, i) => (
-            <InputWithLabel
-              key={i}
-              name={curField.name}
-              label={curField.label}
-              type={curField.type ?? null}
-              error={errorFields.includes(curField.name)}
-              value={registerForm[curField.name as keyof TRegisterForm]}
-              handleChange={(target) => handleRegisterChange(target)}
-            />
-          ))}
+          <InputsContainer>
+            <InputGroup>
+              {register.user.map((curField, i) => (
+                <InputWithLabel
+                  key={i}
+                  name={curField.name}
+                  label={curField.label}
+                  type={curField.type ?? null}
+                  error={errorFields.includes(curField.name)}
+                  value={registerForm[curField.name as keyof TRegisterForm]}
+                  handleChange={(target) => handleRegisterChange(target)}
+                />
+              ))}
+            </InputGroup>
+
+            <InputGroup>
+              {register.company.map((curField, i) => (
+                <InputWithLabel
+                  key={i}
+                  name={curField.name}
+                  label={curField.label}
+                  error={errorFields.includes(curField.name)}
+                  value={registerForm[curField.name as keyof TRegisterForm]}
+                  handleChange={(target) => handleRegisterChange(target)}
+                />
+              ))}
+            </InputGroup>
+          </InputsContainer>
 
           <FormButton text="REGISTRAR"/>
 

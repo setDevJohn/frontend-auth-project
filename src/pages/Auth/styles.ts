@@ -29,10 +29,21 @@ export const FormTitle = styled.h2`
   margin-bottom: 10px;
   color: #5151a2;
 `;
+export const InputsContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 30px;
+`;
+export const InputGroup = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
 export const SpanTextForm = styled.span`
   color: #004;
   font-size: 1.3rem;
   text-decoration: underline;
+  text-align: center;
   cursor: pointer;
 `;
 export const ImageContainer = styled.div<ImageContainerProp>`
