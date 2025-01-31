@@ -38,6 +38,7 @@ export const InputsContainer = styled.div`
 export const InputGroup = styled.div`
   display: flex;
   flex-direction: column;
+  gap: 10px;
 `;
 export const SpanTextForm = styled.span`
   color: #004;
@@ -64,7 +65,7 @@ export const ImageContainer = styled.div<ImageContainerProp>`
 `;
 export const ImageTitle = styled.p`
   color: #fff;
-  font-size: 1.8rem;
+  font-size: 2.1rem;
   font-weight: 600;
   text-align: center;
 `;
