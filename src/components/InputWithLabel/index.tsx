@@ -12,7 +12,6 @@ type ComponentProps = {
 export function InputWithLabel({label, value, name, type, error = false, handleChange}: ComponentProps) {
   return (
     <InputContainer>
-      <InputLabel>{label}</InputLabel>
       <InputEntrie 
         type={type || "text"}
         name={name}
@@ -20,6 +19,8 @@ export function InputWithLabel({label, value, name, type, error = false, handleC
         $error={error}
         onChange={({target}) => handleChange(target)}
       />
+
+      <InputLabel>{label}</InputLabel>
     </InputContainer>
   )
 }
