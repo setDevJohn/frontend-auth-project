@@ -12,8 +12,8 @@ export type TLoginForm = {
 export type TRegisterForm = {
   name: string,
   email: string,
-  password: string,
-  socialReason: string,
+  pass: string,
+  companyName: string,
   tradingName: string,
   cnpj: string,
 }
@@ -25,8 +25,8 @@ const defaultLoginForm = {
 const defaultRegisterForm = {
   name: '',
   email: '',
-  password: '',
-  socialReason: '',
+  pass: '',
+  companyName: '',
   tradingName: '',
   cnpj: '',
 };
@@ -37,19 +37,22 @@ export function Auth () {
   const [registerStatus, setRegisterStatus] = useState<boolean>(false);
   const [errorFields, setErrorFields] = useState<string[]>(['']);
 
+  function resetForm () {
+    setLoginForm(defaultLoginForm);
+    setRegisterForm(defaultRegisterForm);
+  }
+
   const handleChangeForm = () => {
     setRegisterStatus(prev => !prev);
-
-    setTimeout(() => {
-      setErrorFields([]);
-      setLoginForm(defaultLoginForm);
-      setRegisterForm(defaultRegisterForm);
-    }, 500);
+    setErrorFields([]);
+    
+    setTimeout(() => resetForm(), 400);
   };
 
   return (
     <Container>
       <RegisterForm 
+        resetForm={resetForm}
         errorFields={errorFields}
         setErrorFields={setErrorFields}
         registerForm={registerForm}
@@ -58,6 +61,7 @@ export function Auth () {
       />      
 
       <LoginForm
+        resetForm={resetForm}
         errorFields={errorFields}
         setErrorFields={setErrorFields}
         loginForm={loginForm}
