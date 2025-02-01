@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const Button = styled.input`
   background-color: #5151A2;
@@ -14,7 +14,7 @@ export const Button = styled.input`
   width: 100%;
   max-width: 243px;
   cursor: pointer;
-  transition: all ease 0.2s ;
+  transition: all ease 0.1s;
 
   &:active {
     transform: scale(0.97);

@@ -12,7 +12,9 @@
   "dependencies": {
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
-    "styled-components": "^6.1.14"
+    "react-toastify": "^11.0.3",
+    "styled-components": "^6.1.14",
+    "vite-tsconfig-paths": "^5.1.4"
   },
   "devDependencies": {
     "@eslint/js": "^9.17.0",

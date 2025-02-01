@@ -18,11 +18,16 @@ export default tseslint.config(
       'react-refresh': reactRefresh,
     },
     rules: {
-      ...reactHooks.configs.recommended.rules,
-      'react-refresh/only-export-components': [
-        'warn',
-        { allowConstantExport: true },
-      ],
+      indent: ["error", 2, { SwitchCase: 1 }],
+      quotes: ["error", "single"],
+      semi: ["error", "always"],
+      "block-spacing": ["error", "always"],
+      "space-before-function-paren": ["error", "always"],
+      "object-curly-spacing": ["error", "always"],
+      eqeqeq: ["error", "always"],
+      "react/prop-types": "off",
+      "@typescript-eslint/no-explicit-any": "warn",
+      "prefer-const": "error",
     },
   },
 )

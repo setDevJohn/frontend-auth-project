@@ -1,4 +1,4 @@
-import { createGlobalStyle } from "styled-components";
+import { createGlobalStyle } from 'styled-components';
 
 export const GlobalStyle = createGlobalStyle`
   * {
@@ -8,8 +8,12 @@ export const GlobalStyle = createGlobalStyle`
   }
 
   html {
-    /* font-family: "Poppins", serif; */
     font-family: "Montserrat", serif;
     font-size: 62.5%;
   }
-`
+
+  .custom-toast {
+    font-size: 1.3rem;
+    color: #515151; 
+  }
+`;

@@ -1,7 +1,7 @@
 const login = [
   { name: 'login', label: 'E-mail' },
   { name: 'pass', label: 'Senha', type: 'password' },
-]
+];
 
 const register = {
   user: [
@@ -14,8 +14,8 @@ const register = {
     { name: 'tradingName', label: 'Nome Fantasia' },
     { name: 'cnpj', label: 'CNPJ' },
   ] 
-}
+};
 
 
 
-export { login, register }
+export { login, register };

@@ -1,4 +1,4 @@
-import { InputContainer, InputEntrie, InputLabel } from "./styles";
+import { InputContainer, InputEntrie, InputLabel } from './styles';
 
 type ComponentProps = {
   label: string,
@@ -9,18 +9,18 @@ type ComponentProps = {
   type?: string | null,
 }
 
-export function InputWithLabel({label, value, name, type, error = false, handleChange}: ComponentProps) {
+export function InputWithLabel ({ label, value, name, type, error = false, handleChange }: ComponentProps) {
   return (
     <InputContainer>
       <InputEntrie 
-        type={type || "text"}
+        type={type || 'text'}
         name={name}
         value={value}
         $error={error}
-        onChange={({target}) => handleChange(target)}
+        onChange={({ target }) => handleChange(target)}
       />
 
       <InputLabel>{label}</InputLabel>
     </InputContainer>
-  )
+  );
 }
