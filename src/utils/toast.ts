@@ -1,6 +1,6 @@
 import { toast } from 'react-toastify';
 
-const toastSucess = (message: string) => {
+const toastSuccess = (message: string) => {
   toast.success(message);
 };
 
@@ -12,4 +12,4 @@ const toastError = (message: string) => {
   toast.error(message);
 };
 
-export { toastSucess, toastWarn, toastError };
+export { toastSuccess, toastWarn, toastError };
