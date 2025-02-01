@@ -1,11 +1,26 @@
-import { Button } from './styles';
+import { LinearProgress } from '@mui/material';
+import { Button, ButtonContainer, Loading } from './styles';
 
 type ComponetProps = {
   text?: string
+  loading?: boolean;
 }
 
-export function FormButton ({ text }: ComponetProps) {
+export function FormButton ({ text, loading = false }: ComponetProps) {
   return (
-    <Button type="submit" value={text || 'ENTRAR'}/>
+    <ButtonContainer>
+      <Button 
+        type="submit"
+        $loading={loading}
+        disabled={loading}
+        value={text || 'ENTRAR'}
+      />
+
+      {loading && (
+        <Loading>
+          <LinearProgress />
+        </Loading>
+      )}
+    </ButtonContainer>
   );
 }
