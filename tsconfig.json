@@ -13,6 +13,7 @@
       "@pages/*": ["pages/*"],          
       "@utils/*": ["utils/*"],          
       "@styles/*": ["styles/*"],        
+      "@services/*": ["services/*"],        
     }
   },
   "include": ["src"]
