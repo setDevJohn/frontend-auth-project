@@ -40,6 +40,9 @@ export function Auth () {
   function resetForm () {
     setLoginForm(defaultLoginForm);
     setRegisterForm(defaultRegisterForm);
+    if (document.activeElement instanceof HTMLElement) {
+      document.activeElement.blur();
+    } 
   }
 
   const handleChangeForm = () => {
@@ -52,7 +55,6 @@ export function Auth () {
   return (
     <Container>
       <RegisterForm 
-        resetForm={resetForm}
         errorFields={errorFields}
         setErrorFields={setErrorFields}
         registerForm={registerForm}
