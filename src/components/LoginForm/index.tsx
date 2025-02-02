@@ -1,5 +1,5 @@
-import { Dispatch, FormEvent, SetStateAction } from 'react';
-import { toastWarn } from '@utils/toast';
+import { Dispatch, FormEvent, SetStateAction, useState } from 'react';
+import { toastError, toastWarn } from '@utils/toast';
 import { TLoginForm } from '@pages/Auth';
 import { login } from '@pages/Auth/inputList';
 import { FormButton } from '../FormButton';
@@ -11,6 +11,7 @@ type TLoginChange = {
   value: string,
 }
 type ComponentProps = {
+  resetForm: () => void,
   errorFields: string[],
   setErrorFields: Dispatch<SetStateAction<string[]>>,
   loginForm: TLoginForm,
@@ -19,12 +20,15 @@ type ComponentProps = {
 }
 
 export function LoginForm ({
+  resetForm,
   errorFields,
   setErrorFields,
   loginForm,
   setLoginForm,
   handleChangeForm,
 }: ComponentProps) {
+  const [loading, setLoading] = useState(false);
+
   function handleLoginChange ({ name, value }: TLoginChange) {
     setErrorFields(prev => prev.filter(field => field !== name));
     setLoginForm(prev => ({ ...prev, [name]: value }));
@@ -37,6 +41,17 @@ export function LoginForm ({
     if (errorFields.length) {
       setErrorFields(errorFields.map(field => field[0]));
       return toastWarn('Preencha todos os campos');
+    }
+
+    try {
+      setLoading(true);
+
+      resetForm();
+    } catch (err) {
+      console.error('Erro ao criar usuário:', err);
+      toastError(err || 'Erro ao criar usuário');
+    } finally {
+      setLoading(false);
     }
   }
 
@@ -57,12 +72,12 @@ export function LoginForm ({
           />
         ))}
 
-        <FormButton text="REGISTRAR"/>
+        <FormButton loading={loading} text="REGISTRAR"/>
 
-        <SpanTextForm>
+        <SpanTextForm $loading={loading}>
           Esqueci minha senha
-        </SpanTextForm>
-        <SpanTextForm $lastSpan onClick={handleChangeForm}>
+        </SpanTextForm >
+        <SpanTextForm $lastSpan $loading={loading} onClick={handleChangeForm}>
           Não possui um cadastro? Se inscreva!
         </SpanTextForm>
       </Form>

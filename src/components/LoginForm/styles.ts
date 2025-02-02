@@ -2,6 +2,7 @@ import styled from 'styled-components';
 
 type TSpanTextFrom = {
   $lastSpan?: boolean
+  $loading: boolean;
 }
 
 export const FormContainer = styled.div`
@@ -28,6 +29,8 @@ export const SpanTextForm = styled.span<TSpanTextFrom>`
   font-size: 1.3rem;
   text-decoration: underline;
   margin: 0 auto;
-  margin-top: ${({ $lastSpan }) => $lastSpan && '-7px'};
   cursor: pointer;
+  margin-top: ${({ $lastSpan }) => $lastSpan && '-7px'};
+  opacity: ${({ $loading }) => $loading ? 0.8 : 1};
+  pointer-events: ${({ $loading }) => $loading && 'none'};
 `;
