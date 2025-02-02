@@ -38,6 +38,6 @@ export const InputEntrie = styled.input<TInputEntrie>`
     left: 10px;
     background-color: #fff;
     font-size: 1.2rem;
-    /* padding: 0 5px; */
+    padding: 0 5px;
   }
 `;
