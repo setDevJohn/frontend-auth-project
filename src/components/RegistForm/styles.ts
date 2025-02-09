@@ -37,7 +37,8 @@ export const InputGroup = styled.div`
 export const SpanTextForm = styled.span<TSpanTextFrom>`
   color: #004;
   font-size: 1.3rem;
-  text-decoration: underline;
+  line-height: 11px;
+  border-bottom: 1px solid #9c9cc5;
   margin: 0 auto;
   cursor: pointer;
   opacity: ${({ $loading }) => $loading ? 0.8 : 1};

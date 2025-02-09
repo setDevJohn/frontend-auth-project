@@ -27,10 +27,11 @@ export const FormTitle = styled.h2`
 export const SpanTextForm = styled.span<TSpanTextFrom>`
   color: #004;
   font-size: 1.3rem;
-  text-decoration: underline;
+  line-height: 11px;
+  border-bottom: 1px solid #9c9cc5;
   margin: 0 auto;
   cursor: pointer;
-  margin-top: ${({ $lastSpan }) => $lastSpan && '-7px'};
+  margin-top: ${({ $lastSpan }) => $lastSpan && '-4px'};
   opacity: ${({ $loading }) => $loading ? 0.8 : 1};
   pointer-events: ${({ $loading }) => $loading && 'none'};
 `;

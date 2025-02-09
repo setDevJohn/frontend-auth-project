@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { RegisterForm } from '@components/RegistForm';
 import { LoginForm } from '@components/LoginForm';
 import { AuthImage } from '@components/AuthImage';
-import { Container } from './styles';
+import { Container, ResetPassword } from './styles';
 
 export type TLoginForm = {
   login: string,
@@ -72,6 +72,10 @@ export function Auth () {
       />
 
       <AuthImage registerStatus={registerStatus}/>    
+
+      <ResetPassword $resetModal={false}>
+        Esqueceu a senha? Clique aqui para recuperá-la.
+      </ResetPassword>
     </Container>
   );
 }
