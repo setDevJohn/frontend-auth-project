@@ -18,6 +18,7 @@ type ComponentProps = {
   loginForm: TLoginForm,
   setLoginForm: Dispatch<SetStateAction<TLoginForm>>,
   handleChangeForm: () => void,
+  setResetModal: (status: boolean) => void,
 }
 
 export function LoginForm ({
@@ -27,6 +28,7 @@ export function LoginForm ({
   loginForm,
   setLoginForm,
   handleChangeForm,
+  setResetModal,
 }: ComponentProps) {
   const [loading, setLoading] = useState(false);
 
@@ -77,7 +79,7 @@ export function LoginForm ({
 
         <FormButton loading={loading} text="REGISTRAR"/>
 
-        <SpanTextForm $loading={loading}>
+        <SpanTextForm $loading={loading} onClick={() => setResetModal(true)}>
           Esqueci minha senha
         </SpanTextForm >
         <SpanTextForm $lastSpan $loading={loading} onClick={handleChangeForm}>

@@ -3,7 +3,8 @@ import { useState } from 'react';
 import { RegisterForm } from '@components/RegistForm';
 import { LoginForm } from '@components/LoginForm';
 import { AuthImage } from '@components/AuthImage';
-import { Container, ResetPassword } from './styles';
+import { Container } from './styles';
+import { ResetPassword } from '@components/ResetPassaword';
 
 export type TLoginForm = {
   login: string,
@@ -35,6 +36,7 @@ export function Auth () {
   const [loginForm, setLoginForm] = useState<TLoginForm>(defaultLoginForm);
   const [registerForm, setRegisterForm] = useState<TRegisterForm>(defaultRegisterForm);
   const [registerStatus, setRegisterStatus] = useState<boolean>(false);
+  const [resetModal, setResetModal] = useState<boolean>(false);
   const [errorFields, setErrorFields] = useState<string[]>(['']);
 
   function resetForm () {
@@ -69,13 +71,12 @@ export function Auth () {
         loginForm={loginForm}
         setLoginForm={setLoginForm}
         handleChangeForm={handleChangeForm}
+        setResetModal={setResetModal}
       />
 
-      <AuthImage registerStatus={registerStatus}/>    
+      <AuthImage registerStatus={registerStatus}/>
 
-      <ResetPassword $resetModal={false}>
-        Esqueceu a senha? Clique aqui para recuperá-la.
-      </ResetPassword>
+      <ResetPassword resetModal={resetModal} setResetModal={setResetModal}/>
     </Container>
   );
 }
