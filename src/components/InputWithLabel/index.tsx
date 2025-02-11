@@ -7,9 +7,18 @@ type ComponentProps = {
   handleChange: (target: EventTarget & HTMLInputElement) => void,
   error?: boolean,
   type?: string | null,
+  styles?: React.CSSProperties,
 }
 
-export function InputWithLabel ({ label, value, name, type, error = false, handleChange }: ComponentProps) {
+export function InputWithLabel ({ 
+  label,
+  value,
+  name,
+  handleChange,
+  type,
+  error = false,
+  styles,
+}: ComponentProps) {
   return (
     <InputContainer>
       <InputEntrie 
@@ -17,6 +26,7 @@ export function InputWithLabel ({ label, value, name, type, error = false, handl
         name={name}
         value={value}
         $error={error}
+        styles={styles}
         onChange={({ target }) => handleChange(target)}
       />
 
