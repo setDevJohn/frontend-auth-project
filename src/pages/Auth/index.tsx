@@ -4,7 +4,7 @@ import { RegisterForm } from '@components/RegistForm';
 import { LoginForm } from '@components/LoginForm';
 import { AuthImage } from '@components/AuthImage';
 import { Container } from './styles';
-import { ResetPassword } from '@components/ResetPassaword';
+import { ResetPassword } from '@components/ResetPassword';
 
 export type TLoginForm = {
   login: string,
@@ -35,7 +35,8 @@ const defaultRegisterForm = {
 export function Auth () {
   const [loginForm, setLoginForm] = useState<TLoginForm>(defaultLoginForm);
   const [registerForm, setRegisterForm] = useState<TRegisterForm>(defaultRegisterForm);
-  const [registerStatus, setRegisterStatus] = useState<boolean>(false);
+  const [registerFormActive, setRegisterFormActive] = useState<boolean>(false);
+  const [registerImageActive, setRegisterImageActive] = useState<boolean>(false);
   const [resetModal, setResetModal] = useState<boolean>(false);
   const [errorFields, setErrorFields] = useState<string[]>(['']);
 
@@ -48,33 +49,40 @@ export function Auth () {
   }
 
   const handleChangeForm = () => {
-    setRegisterStatus(prev => !prev);
+    setRegisterImageActive(prev => !prev);
     setErrorFields([]);
     
-    setTimeout(() => resetForm(), 400);
+    setTimeout(() => {
+      resetForm();
+      setRegisterFormActive(prev => !prev);
+    }, 350);
   };
 
   return (
     <Container>
-      <RegisterForm 
-        errorFields={errorFields}
-        setErrorFields={setErrorFields}
-        registerForm={registerForm}
-        setRegisterForm={setRegisterForm}
-        handleChangeForm={handleChangeForm}
-      />      
+      {registerFormActive
+        ? (
+          <RegisterForm
+            errorFields={errorFields}
+            setErrorFields={setErrorFields}
+            registerForm={registerForm}
+            setRegisterForm={setRegisterForm}
+            handleChangeForm={handleChangeForm}
+          />      
+        ) : (
+          <LoginForm
+            resetForm={resetForm}
+            errorFields={errorFields}
+            setErrorFields={setErrorFields}
+            loginForm={loginForm}
+            setLoginForm={setLoginForm}
+            handleChangeForm={handleChangeForm}
+            setResetModal={setResetModal}
+          />
+        )
+      }
 
-      <LoginForm
-        resetForm={resetForm}
-        errorFields={errorFields}
-        setErrorFields={setErrorFields}
-        loginForm={loginForm}
-        setLoginForm={setLoginForm}
-        handleChangeForm={handleChangeForm}
-        setResetModal={setResetModal}
-      />
-
-      <AuthImage registerStatus={registerStatus}/>
+      <AuthImage registerImageActive={registerImageActive}/>
 
       <ResetPassword resetModal={resetModal} setResetModal={setResetModal}/>
     </Container>

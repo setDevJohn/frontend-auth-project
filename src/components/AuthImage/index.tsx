@@ -6,11 +6,11 @@ import {
   LoginImage,
 } from './styles';
 
-export function AuthImage ({ registerStatus }: {registerStatus: boolean}) {
+export function AuthImage ({ registerImageActive }: {registerImageActive: boolean}) {
   return (
-    <ImageContainer $register={registerStatus}>
+    <ImageContainer $register={registerImageActive}>
       <ImageTitle>
-        {registerStatus 
+        {registerImageActive 
           ? 'Novo por aqui? crie sua conta agora!' 
           : 'Bem-vindo de volta! Acesse já sua conta.'}
       </ImageTitle>
