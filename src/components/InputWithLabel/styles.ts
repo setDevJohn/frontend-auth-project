@@ -12,11 +12,12 @@ export const InputContainer = styled.div`
 `;
 export const InputLabel = styled.label`
   position: absolute;
-  top: 7px;
+  top: 11px;
   left: 15px;
   color: #494949;
   font-family: "Poppins", serif;
   font-size: 1.4rem;
+  line-height: 6px;
   transition: all 0.3s ease;
   pointer-events: none;
 `;
@@ -37,10 +38,10 @@ export const InputEntrie = styled.input<TInputEntrie>`
   }
   &:focus + label,
   &:not([value=""]) + label {
-    top: -9px;
+    top: -3px;
     left: 10px;
     background-color: #fff;
     font-size: 1.2rem;
-    padding: 0 5px;
+    line-height: 6px;
   }
 `;
