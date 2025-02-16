@@ -1,5 +1,5 @@
-import { LinearProgress } from '@mui/material';
-import { Button, ButtonContainer, Loading } from './styles';
+import { Button, ButtonContainer, LoadingContainer } from './styles';
+import { LoadingDots } from '@components/LoadingDots';
 
 type ComponetProps = {
   text?: string
@@ -13,13 +13,12 @@ export function FormButton ({ text, loading = false }: ComponetProps) {
         type="submit"
         $loading={loading}
         disabled={loading}
-        value={text || 'ENTRAR'}
+        value={loading ? '' : (text || 'ENTRAR')}
       />
-
       {loading && (
-        <Loading>
-          <LinearProgress />
-        </Loading>
+        <LoadingContainer>
+          <LoadingDots/>
+        </LoadingContainer>
       )}
     </ButtonContainer>
   );

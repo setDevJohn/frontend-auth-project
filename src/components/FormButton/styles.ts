@@ -23,16 +23,15 @@ export const Button = styled.input<TButton>`
   min-width: 243px;
   transition: all ease 0.1s;
   cursor: ${({ $loading }) => $loading ? 'progress' : 'pointer'};
-  opacity: ${({ $loading }) => $loading ? 0.8 : 1};
+  opacity: ${({ $loading }) => $loading ? 0.9 : 1};
 
   &:active {
     transform: ${({ $loading }) => !$loading && 'scale(0.97)'};
   }
 `;
-export const Loading = styled.div`
+export const LoadingContainer = styled.div`
   position: absolute;
-  bottom: 1px;
-  left: 2px;
-  height: 4px;
-  width: 98%;
+  bottom: 11px;
+  left: 50%;
+  transform: translateX(-50%);
 `;
