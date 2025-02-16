@@ -62,10 +62,8 @@ export function RegisterForm ({
       toastSuccess('Usuário criado com sucesso');
       handleChangeForm();
     } catch (err) {
-      console.error('Erro ao criar usuário:', err);
-      toastError(
-        typeof err === 'string' ? err : 'Erro interno no servidor.'
-      );
+      console.error('Erro ao criar usuário:', err.message);
+      toastError(err.message);
     } finally {
       setLoading(false);
     }
