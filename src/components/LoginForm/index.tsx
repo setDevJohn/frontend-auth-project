@@ -53,8 +53,8 @@ export function LoginForm ({
       toastSuccess('Login Success');
       // resetForm();
     } catch (err) {
-      console.error('Erro ao criar usuário:', err);
-      toastError(err || 'Erro ao criar usuário');
+      console.error('Erro ao criar usuário:', err.message);
+      toastError(err.message);
     } finally {
       setLoading(false);
     }
@@ -77,7 +77,7 @@ export function LoginForm ({
           />
         ))}
 
-        <FormButton loading={loading} text="REGISTRAR"/>
+        <FormButton loading={loading} text="ENTRAR"/>
 
         <SpanTextForm $loading={loading} onClick={() => setResetModal(true)}>
           Esqueci minha senha

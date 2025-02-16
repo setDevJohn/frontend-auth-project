@@ -1,3 +1,4 @@
+import { fadeIn } from '@styles/animations';
 import styled from 'styled-components';
 
 type TSpanTextFrom = {
@@ -6,13 +7,14 @@ type TSpanTextFrom = {
 }
 
 export const FormContainer = styled.div`
+  grid-column: 2/2;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  flex: 1;
   padding: 15px;
   height: 100vh;
+  animation: ${fadeIn} .6s ease;
 `;
 export const Form = styled.form`
   display: flex;
