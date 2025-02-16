@@ -1,8 +1,9 @@
 import { FormEvent, useState } from 'react';
-import { Container, Form, FormContainer, RouteBack, Text, Title } from './styles';
-import { InputWithLabel } from '@components/InputWithLabel';
 import { toastError, toastSuccess } from '@utils/toast';
+import { InputWithLabel } from '@components/InputWithLabel';
 import { FormButton } from '@components/FormButton';
+import { Container, Form, FormContainer, RouteBack, Text, Title } from './styles';
+import { LoadingDots } from '@components/LoadingDots';
 
 type TComponent = {
   resetModal: boolean; 
@@ -58,6 +59,7 @@ export function ResetPassword ({ resetModal, setResetModal } : TComponent) {
 
   return (
     <Container $resetModal={resetModal}>
+      
       <FormContainer>
         <RouteBack onClick={() => setResetModal(false)}>{'< voltar'}</RouteBack>
 
