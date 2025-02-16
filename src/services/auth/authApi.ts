@@ -1,19 +1,20 @@
 import { api } from '../api';
 import { AxiosError } from 'axios';
-import { toastError } from '@utils/toast';
 import { TLoginResquest } from './types';
+import { handleAxiosError } from '@utils/axiosError';
 
 async function login (userData: TLoginResquest) {
   try {
-    const result = await api.post('/auth', userData);
-    console.log(result.data);
-  } catch (err) {
+    return await api.post('/auth', userData);
+  } catch (err: unknown) {
     if (err instanceof AxiosError) {
-      if (err.response) throw err.response.data.message;
-      throw err;
+      if (err.response) {
+        console.error(err);
+        throw new Error(err.response.data.message);
+      }
+      throw new Error(handleAxiosError(err));
     }
-    toastError('Ocorreu um erro inesperado');
-    throw new Error(`Ocorreu um erro inesperado: ${err}`);
+    throw new Error('Ocorreu um erro inesperado.');
   }
 }
 
