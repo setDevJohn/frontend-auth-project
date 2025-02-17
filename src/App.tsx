@@ -1,12 +1,13 @@
-import { Auth } from '@pages/Auth';
 import { GlobalStyle } from '@styles/globalStyles';
+import { AuthProvider } from 'context/auth';
 import { Slide, ToastContainer } from 'react-toastify';
+import { AppRoutes } from 'router';
 
 export function App () {
   return (
-    <>
+    <AuthProvider>
+      <AppRoutes />
       <GlobalStyle />
-      <Auth />
       <ToastContainer 
         className='custom-toast'
         position="top-center"
@@ -19,6 +20,6 @@ export function App () {
         theme="colored"
         transition={Slide}
       />
-    </>
+    </AuthProvider>
   );
 }
