@@ -1,11 +1,11 @@
-import { Dispatch, FormEvent, SetStateAction, useState } from 'react';
-import { toastError, toastSuccess, toastWarn } from '@utils/toast';
+import { Dispatch, FormEvent, SetStateAction, useContext, useState } from 'react';
+import { toastError, toastWarn } from '@utils/toast';
 import { TLoginForm } from '@pages/Auth';
 import { login } from '@pages/Auth/inputList';
 import { FormButton } from '../FormButton';
 import { InputWithLabel } from '../InputWithLabel';
 import { FormContainer, Form, FormTitle, SpanTextForm, } from './styles';
-import { authApi } from '@services/auth/authApi';
+import { AuthContext } from 'context/auth';
 
 type TLoginChange = {
   name: string,
@@ -32,6 +32,8 @@ export function LoginForm ({
 }: ComponentProps) {
   const [loading, setLoading] = useState(false);
 
+  const { handleLogin } = useContext(AuthContext);
+
   function handleLoginChange ({ name, value }: TLoginChange) {
     setErrorFields(prev => prev.filter(field => field !== name));
     setLoginForm(prev => ({ ...prev, [name]: value }));
@@ -48,10 +50,8 @@ export function LoginForm ({
 
     try {
       setLoading(true);
-      await authApi.login({ login: loginForm.login, pass: loginForm.pass });
-
-      toastSuccess('Login Success');
-      // resetForm();
+      await handleLogin({ login: loginForm.login, pass: loginForm.pass });
+      resetForm();
     } catch (err) {
       console.error('Erro ao criar usuário:', err.message);
       toastError(err.message);

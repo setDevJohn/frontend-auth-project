@@ -5,7 +5,8 @@ import { handleAxiosError } from '@utils/axiosError';
 
 async function login (userData: TLoginResquest) {
   try {
-    return await api.post('/auth', userData);
+    const { data: response } = await api.post('/auth', userData);
+    return response;
   } catch (err: unknown) {
     if (err instanceof AxiosError) {
       if (err.response) {
