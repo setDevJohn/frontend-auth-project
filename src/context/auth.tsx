@@ -1,3 +1,4 @@
+import { api } from '@services/api';
 import { authApi } from '@services/auth/authApi';
 import { toastError } from '@utils/toast';
 import { jwtDecode } from 'jwt-decode';
@@ -12,51 +13,82 @@ type LoginProps = {
   pass: string;
 };
 
+export type TTokenData = {
+  companyId: number;
+  userId: number;
+  role: string | null;
+  verified: boolean
+}
+
 type AuthContextProps = {
-  token: string;
-  setToken: (token: string) => void;
-  user: null | object;
-  setUser: (user: object | null) => void;
+  user: TTokenData | null;
+  setUser: (user: TTokenData | null) => void;
+  getUserData: () => TTokenData;
   handleLogin: (credentials: LoginProps) => Promise<void>;
+  handleLogout: () => void;
 };
 
-const AuthContext = createContext<AuthContextProps>({
-  token: '',
-  setToken: () => {},
+export const AuthContext = createContext<AuthContextProps>({
   user: null,
   setUser: () => {},
+  getUserData: () => ({
+    companyId: 0,
+    userId: 0,
+    role: null,
+    verified: false,
+  }),
   handleLogin: async () => {},
+  handleLogout: async () => {},
 });
 
-const AuthProvider = ({ children }: AuthProviderProps) => {
-  const [token, setToken] = useState<string>(localStorage.getItem('token') || '');
-  const [user, setUser] = useState<null | object>(null);
+export const AuthProvider = ({ children }: AuthProviderProps) => {
+  const [user, setUser] = useState<TTokenData | null>(null);
+
+  const getUserData = useCallback((): TTokenData => {
+    try {
+      const localToken = localStorage.getItem('token');
+      if (!localToken) return null;
+
+      const decoded: TTokenData = jwtDecode(localToken);
+      return decoded;
+    } catch (err) {
+      toastError('Erro ao decodificar o token');
+      throw new Error(err instanceof Error ? err.message : 'Erro desconhecido');
+    }
+  }, []);
 
   useEffect(() => {
-    const localTokem = localStorage.getItem('token');
-    if (localTokem) return setToken(localTokem);
-    console.log(localTokem);
-    setUser(null);
+    const userToken = getUserData();
+    if (!userToken) return setUser(null);
+    setUser(userToken);
   }, []);
 
   const handleLogin = useCallback(async (credentials: LoginProps) => {
     try {
       const { resource } = await authApi.login(credentials);
-      setToken(resource);
       localStorage.setItem('token', resource);
-      const decoded = jwtDecode(resource);
+      api.defaults.headers.common.Authorization = `Bearer ${resource}`;
 
-      console.log(decoded);
+      const decoded: TTokenData = jwtDecode(resource);
       setUser(decoded);
     } catch (err) {
-      console.error(err);
-      toastError(err.message);
+      console.error('Erro ao fazer login:', err);
+      throw (err);
     }
   }, []);
 
+  const handleLogout = useCallback(() => {
+    localStorage.removeItem('token');
+    setUser(null);
+  }, []);
+
   const authValue = useMemo(() => ({
-    token, handleLogin, user, setUser, setToken
-  }), [token, user, handleLogin]);
+    user,
+    setUser,
+    getUserData,
+    handleLogin,
+    handleLogout,
+  }), [user, handleLogin, handleLogout, getUserData]);
 
   return (
     <AuthContext.Provider value={authValue}>
@@ -64,5 +96,3 @@ const AuthProvider = ({ children }: AuthProviderProps) => {
     </AuthContext.Provider>
   );
 };
-
-export { AuthContext, AuthProvider };
