@@ -1,10 +1,9 @@
 import { useState } from 'react';
-
-import { RegisterForm } from '@components/RegistForm';
-import { LoginForm } from '@components/LoginForm';
+import { RegisterForm } from '@components/Form/RegistForm';
+import { LoginForm } from '@components/Form/LoginForm';
 import { AuthImage } from '@components/AuthImage';
+import { ResetPassForm } from '@components/Form/ResetPassForm';
 import { Container } from './styles';
-import { ResetPassword } from '@components/ResetPassword';
 
 export type TLoginForm = {
   login: string,
@@ -84,7 +83,7 @@ export function Auth () {
 
       <AuthImage registerImageActive={registerImageActive}/>
 
-      <ResetPassword resetModal={resetModal} setResetModal={setResetModal}/>
+      <ResetPassForm resetModal={resetModal} setResetModal={setResetModal}/>
     </Container>
   );
 }
