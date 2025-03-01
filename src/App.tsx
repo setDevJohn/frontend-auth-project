@@ -1,7 +1,7 @@
-import { GlobalStyle } from '@styles/globalStyles';
-import { AuthProvider } from 'context/auth';
+import { AuthProvider } from 'context/Auth/auth';
 import { Slide, ToastContainer } from 'react-toastify';
 import { AppRoutes } from 'routes';
+import { GlobalStyle } from '@styles/globalStyles';
 
 export function App () {
   return (
