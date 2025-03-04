@@ -1,4 +1,5 @@
 import { fadeIn } from '@styles/animations';
+import { device } from 'constants/mediaSizes';
 import styled from 'styled-components';
 
 type TSpanTextFrom = {
@@ -15,6 +16,10 @@ export const FormContainer = styled.div`
   padding: 15px;
   height: 100vh;
   animation: ${fadeIn} .6s ease;
+
+  @media ${device.laptop} {
+    justify-content: start;
+  }
 `;
 export const Form = styled.form`
   display: flex;

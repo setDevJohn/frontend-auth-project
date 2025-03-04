@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { device } from './../../constants/mediaSizes';
 
 type ImageContainerProp = {
   $register: boolean
@@ -7,6 +8,7 @@ type ImageContainerProp = {
 export const ImageContainer = styled.div<ImageContainerProp>`
   position: absolute;
   inset: 0;
+  z-index: 1;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -19,6 +21,10 @@ export const ImageContainer = styled.div<ImageContainerProp>`
   padding: 50px;
   width: 50%;
   height: 100vh;
+
+  @media ${device.laptop} {
+    display: none;
+  }
 `;
 export const ImageTitle = styled.p`
   color: #fff;
