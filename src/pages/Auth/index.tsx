@@ -3,7 +3,8 @@ import { RegisterForm } from '@components/Form/RegistForm';
 import { LoginForm } from '@components/Form/LoginForm';
 import { AuthImage } from '@components/AuthImage';
 import { ResetPassForm } from '@components/Form/ResetPassForm';
-import { Container } from './styles';
+import logoImage from '@assets/images/logo.png';
+import { Container, LogoContainer, LogoImage, Title } from './styles';
 
 export type TLoginForm = {
   login: string,
@@ -59,6 +60,13 @@ export function Auth () {
 
   return (
     <Container>
+      <LogoContainer>
+        <LogoImage src={logoImage} alt="Logo da empresa"/>
+        <Title>Auth Company</Title>
+      </LogoContainer>
+
+      <AuthImage registerImageActive={registerImageActive}/>
+
       {registerFormActive
         ? (
           <RegisterForm
@@ -80,8 +88,6 @@ export function Auth () {
           />
         )
       }
-
-      <AuthImage registerImageActive={registerImageActive}/>
 
       <ResetPassForm resetModal={resetModal} setResetModal={setResetModal}/>
     </Container>
