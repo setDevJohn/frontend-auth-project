@@ -15,7 +15,7 @@ export const InputLabel = styled.label`
   top: 11px;
   left: 15px;
   color: #494949;
-  font-family: "Poppins", serif;
+  font-family: ${({ theme }) => theme.secondaryFont};
   font-size: 1.4rem;
   line-height: 6px;
   transition: all 0.3s ease;
@@ -23,7 +23,7 @@ export const InputLabel = styled.label`
 `;
 export const InputEntrie = styled.input<TInputEntrie>`
   color: #2f2f2f;
-  font-family: "Poppins", serif;
+  font-family: ${({ theme }) => theme.secondaryFont};
   font-size: 1.3rem;
   border: ${({ $error }) => `1px solid ${$error ? '#e23333' : '#eee'}`};
   border-radius: 4px;

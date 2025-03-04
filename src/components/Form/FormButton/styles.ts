@@ -11,7 +11,7 @@ export const ButtonContainer = styled.div`
 export const Button = styled.input<TButton>`
   background-color: #5151A2;
   color: #fff;
-  font-family: "Poppins", serif;
+  font-family: ${({ theme }) => theme.secondaryFont};
   font-size: 1.5rem;
   font-weight: 500;
   padding: 6px 12px;
