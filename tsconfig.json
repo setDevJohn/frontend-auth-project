@@ -4,8 +4,11 @@
     "lib": ["es2017", "dom"],
     "outDir": "./dist",
     "jsx": "react-jsx",
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
     "moduleResolution": "node",
     "forceConsistentCasingInFileNames": true,
+    "skipLibCheck": true,
     "baseUrl": "./src",
     "paths": {
       "@assets/*": ["assets/*"],        

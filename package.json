@@ -7,23 +7,25 @@
     "dev": "vite",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview --port 4002"
   },
   "dependencies": {
     "@emotion/react": "^11.14.0",
     "@emotion/styled": "^11.14.0",
     "@mui/material": "^6.4.2",
+    "@types/react-router-dom": "^5.3.3",
     "axios": "^1.7.9",
     "jwt-decode": "^4.0.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
-    "react-router-dom": "^7.1.5",
+    "react-router-dom": "^7.2.0",
     "react-toastify": "^11.0.3",
     "styled-components": "^6.1.14",
     "vite-tsconfig-paths": "^5.1.4"
   },
   "devDependencies": {
     "@eslint/js": "^9.17.0",
+    "@types/node": "^22.13.9",
     "@types/react": "^18.3.18",
     "@types/react-dom": "^18.3.5",
     "@vitejs/plugin-react-swc": "^3.5.0",

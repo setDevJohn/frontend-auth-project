@@ -13,5 +13,8 @@ export default defineConfig({
       '@styles': '/src/styles',
       '@services': '/src/services',
     },
+  },
+  preview: {
+    allowedHosts: ['auth.johndevstudio.com']
   }
 });
