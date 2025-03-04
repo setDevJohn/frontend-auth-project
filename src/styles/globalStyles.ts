@@ -8,7 +8,7 @@ export const GlobalStyle = createGlobalStyle`
   }
 
   html {
-    font-family: "Montserrat", serif;
+    font-family: ${({ theme }) => theme.primaryFont};
     font-size: 62.5%;
   }
 
