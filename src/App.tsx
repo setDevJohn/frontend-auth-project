@@ -1,4 +1,4 @@
-import { AppRoutes } from 'routes';
+import { AppRoutes } from 'router';
 import { Slide, ToastContainer } from 'react-toastify';
 import { AuthProvider } from 'context/Auth/auth';
 import { ThemeProvider } from 'styled-components';
