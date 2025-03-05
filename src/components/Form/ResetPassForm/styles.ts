@@ -11,7 +11,7 @@ export const Container = styled.div<TContainer>`
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: #fff;
+  background-color: ${({ theme }) => theme.backgroundColor};
   width: 100%;
   height: ${({ $resetModal }) => $resetModal ? '100vh' : '0px'};
   transition: all 0.8s ease;
@@ -25,7 +25,7 @@ export const FormContainer = styled.div`
 export const RouteBack = styled.p`
   cursor: pointer;
   font-size: 1.3rem;
-  color: #5151a2;
+  color: ${({ theme }) => theme.mainColor};
   margin-bottom: 10px;
   width: 100%;
 `;
@@ -36,11 +36,11 @@ export const Form = styled.form`
 `;
 export const Title = styled.h2`
   font-size: 2.7rem;
-  color: #5151a2;
+  color: ${({ theme }) => theme.mainColor};
   margin-bottom: 10px;
 `;
 export const Text = styled.p`
-  color: #686868;
+  color: ${({ theme }) => theme.mediumTextColor};
   font-size: 1.3rem;
   margin-bottom: 18px;
   width: 100%;

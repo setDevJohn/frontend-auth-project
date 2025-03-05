@@ -29,10 +29,10 @@ export const Form = styled.form`
 export const FormTitle = styled.h2`
   font-size: 2.7rem;
   margin-bottom: 10px;
-  color: #5151a2;
+  color: ${({ theme }) => theme.mainColor};
 `;
 export const SpanTextForm = styled.span<TSpanTextFrom>`
-  color: #004;
+  color: ${({ theme }) => theme.contrastTextColor};
   font-size: 1.3rem;
   line-height: 11px;
   border-bottom: 1px solid #9c9cc5;

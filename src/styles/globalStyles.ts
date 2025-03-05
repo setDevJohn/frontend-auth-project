@@ -14,6 +14,6 @@ export const GlobalStyle = createGlobalStyle`
 
   .custom-toast {
     font-size: 1.3rem;
-    color: #515151; 
+    color: ${({ theme }) => theme.darkTextColor};
   }
 `;

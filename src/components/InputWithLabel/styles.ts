@@ -14,7 +14,7 @@ export const InputLabel = styled.label`
   position: absolute;
   top: 11px;
   left: 15px;
-  color: #494949;
+  color: ${({ theme }) => theme.darkTextColor};
   font-family: ${({ theme }) => theme.secondaryFont};
   font-size: 1.4rem;
   line-height: 6px;
@@ -22,7 +22,7 @@ export const InputLabel = styled.label`
   pointer-events: none;
 `;
 export const InputEntrie = styled.input<TInputEntrie>`
-  color: #2f2f2f;
+  color: ${({ theme }) => theme.darkTextColor};
   font-family: ${({ theme }) => theme.secondaryFont};
   font-size: 1.3rem;
   border: ${({ $error }) => `1px solid ${$error ? '#e23333' : '#eee'}`};
@@ -40,7 +40,7 @@ export const InputEntrie = styled.input<TInputEntrie>`
   &:not([value=""]) + label {
     top: -3px;
     left: 10px;
-    background-color: #fff;
+    background-color: ${({ theme }) => theme.backgroundColor};
     font-size: 1.2rem;
     line-height: 6px;
   }
