@@ -75,7 +75,6 @@ export function ResetPassForm ({ resetModal, setResetModal } : TComponent) {
 
   return (
     <Container $resetModal={resetModal}>
-      
       <FormContainer>
         <RouteBack onClick={handleCloseModal}>
           {'< voltar'}
