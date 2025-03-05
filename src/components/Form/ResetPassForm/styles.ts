@@ -12,6 +12,7 @@ export const Container = styled.div<TContainer>`
   flex-direction: column;
   align-items: center;
   background-color: ${({ theme }) => theme.backgroundColor};
+  padding: 0 15px;
   width: 100%;
   height: ${({ $resetModal }) => $resetModal ? '100vh' : '0px'};
   transition: all 0.8s ease;
