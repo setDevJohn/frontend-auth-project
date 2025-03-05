@@ -7,6 +7,7 @@ import { AuthContextProps, AuthProviderProps, LoginProps, TTokenData } from './t
 
 export const AuthContext = createContext<AuthContextProps>({
   user: null,
+  loading: true,
   setUser: () => {},
   getUserData: () => ({
     companyId: 0,
@@ -21,9 +22,11 @@ export const AuthContext = createContext<AuthContextProps>({
 
 export const AuthProvider = ({ children }: AuthProviderProps) => {
   const [user, setUser] = useState<TTokenData | null>(null);
+  const [loading, setLoading] = useState(true);
 
   const getUserData = useCallback((): TTokenData => {
     try {
+      setLoading(true);
       const localToken = localStorage.getItem('token');
       if (!localToken) return null;
 
@@ -32,6 +35,8 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
     } catch (err) {
       toastError('Erro ao decodificar o token');
       throw new Error(err.message);
+    } finally {
+      setLoading(false);
     }
   }, []);
 
@@ -56,17 +61,19 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
   }, []);
 
   const handleLogout = useCallback(() => {
+    setLoading(true);
     localStorage.removeItem('token');
     setUser(null);
   }, []);
 
   const authValue = useMemo(() => ({
     user,
+    loading,
     setUser,
     getUserData,
     handleLogin,
     handleLogout,
-  }), [user, handleLogin, handleLogout, getUserData]);
+  }), [user, loading, handleLogin, handleLogout, getUserData]);
 
   return (
     <AuthContext.Provider value={authValue}>

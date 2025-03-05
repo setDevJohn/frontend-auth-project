@@ -20,6 +20,7 @@ export type TTokenData = {
 
 export type AuthContextProps = {
   user: TTokenData | null;
+  loading: boolean;
   setUser: Dispatch<SetStateAction<TTokenData>>;
   getUserData: () => TTokenData;
   handleLogin: (credentials: LoginProps) => Promise<void>;
