@@ -1,3 +1,4 @@
+import { device } from 'constants/mediaSizes';
 import styled from 'styled-components';
 
 type TContainer = {
@@ -17,8 +18,13 @@ export const Container = styled.div<TContainer>`
   width: 100%;
   height: ${({ $resetModal }) => $resetModal ? '100vh' : '0px'};
   transition: all 0.8s ease;
+
+  @media ${device.tablet} {
+    background-color: ${({ theme }) => theme.mainColor};
+  }
 `;
 export const FormContainer = styled.div`
+  background-color: #fff;
   box-shadow: 1px 2px 20px -4px #0004;
   margin-top: 18vh;
   padding: 20px;
