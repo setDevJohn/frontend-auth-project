@@ -9,7 +9,7 @@ export const Container = styled.div`
   height: 100vh;
   overflow: hidden;
 
-  @media ${device.laptop} { 
+  @media ${device.tablet} { 
     display: flex;
     flex-direction: column;
   }
@@ -22,7 +22,7 @@ export const LogoContainer = styled.div`
   margin-bottom: 5vh;
   width: 100%;
 
-  @media ${device.laptop} {
+  @media ${device.tablet} {
     display: flex;
   }
 `;

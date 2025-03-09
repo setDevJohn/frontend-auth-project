@@ -22,7 +22,7 @@ export const ImageContainer = styled.div<ImageContainerProp>`
   width: 50%;
   height: 100vh;
 
-  @media ${device.laptop} {
+  @media ${device.tablet} {
     display: none;
   }
 `;

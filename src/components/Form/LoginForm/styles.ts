@@ -17,7 +17,7 @@ export const FormContainer = styled.div`
   height: 100vh;
   animation: ${fadeIn} .6s ease;
 
-  @media ${device.laptop} {
+  @media ${device.tablet} {
     justify-content: start;
   }
 `;
