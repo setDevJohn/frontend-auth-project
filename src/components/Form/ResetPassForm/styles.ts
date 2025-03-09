@@ -8,6 +8,7 @@ export const Container = styled.div<TContainer>`
   position: absolute;
   bottom: 0;
   left: 0;
+  z-index: 2;
   display: flex;
   flex-direction: column;
   align-items: center;
