@@ -1,3 +1,4 @@
+import { CSSProperties } from 'styled-components';
 import { InputContainer, InputEntrie, InputLabel } from './styles';
 
 type ComponentProps = {
@@ -7,7 +8,7 @@ type ComponentProps = {
   handleChange: (target: EventTarget & HTMLInputElement) => void,
   error?: boolean,
   type?: string | null,
-  styles?: React.CSSProperties,
+  styles?: CSSProperties,
 }
 
 export function InputWithLabel ({ 

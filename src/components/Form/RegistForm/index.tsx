@@ -13,6 +13,7 @@ import {
   InputsContainer,
   InputGroup,
   SpanTextForm,
+  inputStyle,
 } from './styles';
 
 type TLoginChange = {
@@ -79,6 +80,7 @@ export function RegisterForm ({
             {register.user.map((curField, i) => (
               <InputWithLabel
                 key={i}
+                styles={inputStyle}
                 name={curField.name}
                 label={curField.label}
                 type={curField.type ?? null}
@@ -93,6 +95,7 @@ export function RegisterForm ({
             {register.company.map((curField, i) => (
               <InputWithLabel
                 key={i}
+                styles={inputStyle}
                 name={curField.name}
                 label={curField.label}
                 error={errorFields.includes(curField.name)}

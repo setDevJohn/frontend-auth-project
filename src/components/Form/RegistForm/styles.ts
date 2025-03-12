@@ -56,3 +56,6 @@ export const SpanTextForm = styled.span<TSpanTextFrom>`
   opacity: ${({ $loading }) => $loading ? 0.8 : 1};
   pointer-events: ${({ $loading }) => $loading && 'none'};
 `;
+export const inputStyle = {
+  width: '220px'
+};
