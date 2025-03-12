@@ -33,7 +33,7 @@ export const ImageTitle = styled.p`
   text-align: center;
 `;
 export const ImageAnchor = styled.a`
-  max-width: 90%;
+  max-width: 75%;
 `;
 export const LoginImage = styled.img`
   width: 100%;
